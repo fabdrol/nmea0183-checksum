@@ -1,13 +1,13 @@
 {
   "name": "nmea0183-checksum",
-  "version": "0.1.1",
-  "description": "Tiny executable program that generates a NMEA0183 checksum for a given sentence",
+  "version": "1.0.4",
+  "description": "Tiny CLI program that generates a NMEA0183 checksum for a given sentence",
   "main": "index.js",
   "bin": {
     "nmea0183-checksum": "bin/nmea0183-checksum"
   },
   "scripts": {
-    "test": "DEBUG=nmea0183* node ."
+    "test": "mocha"
   },
   "keywords": [],
   "author": "Fabian Tollenaar <fabian@decipher.industries> (https://decipher.industries)",
@@ -15,5 +15,10 @@
   "dependencies": {
     "debug": "^2.4.4",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-things": "^0.2.0",
+    "mocha": "^3.2.0"
   }
 }
