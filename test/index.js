@@ -18,6 +18,7 @@
 
 const getCheckSum = require('../index')
 const exec = require('child_process').exec
+const join = require('path').join
 const chai = require('chai')
 const expect = chai.expect
 
@@ -43,17 +44,17 @@ describe('getCheckSum', () => {
     done()
   })
 
-  it('CLI should return sentence "$SDHDG,181.9,,,0.6,E*32"', (done) => {
+  it('CLI program should return sentence "$SDHDG,181.9,,,0.6,E*32"', (done) => {
     const sentence = '$SDHDG,181.9,,,0.6,E'
-    const cmd = `../bin/nmea0183-checksum '${sentence}'`
+    const cmd = `'${join(__dirname, '../bin/nmea0183-checksum')}' '${sentence}'`
 
     exec(cmd, (err, stdout, stderr) => {
       if (err) {
         return done(err)
       }
 
-      console.log(stdout)
-      console.log(stderr)
+      expect(stdout).to.be.a('string')
+      expect(stdout.trim()).to.equal('$SDHDG,181.9,,,0.6,E*32')
       done()
     })
   })
